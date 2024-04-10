@@ -16,7 +16,9 @@ jobs:
       MYSQL_DATABASE: ${{vars.MYSQL_DATABASE }}
       MYSQL_PORT: ${{vars.MYSQL_PORT }}
       START: ${{vars.START }}
+      END: ${{vars.END }}
       IS_SPLIDER: ${{vars.IS_SPLIDER }}
+      API_KEY: ${{vars.API_KEY }}
 
     steps:
       - name: Checkout Repository
