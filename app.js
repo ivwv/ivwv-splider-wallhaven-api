@@ -3,6 +3,7 @@ const axios = require("axios");
 const mysql = require("mysql");
 const fs = require("fs");
 console.log(pool);
+console.log(process.env);
 require("dotenv").config();
 // 防止 update 时 github actions 会运行，使用环境变量控制
 if (!process.env.IS_SPLIDER) return console.log("本次不会执行");
