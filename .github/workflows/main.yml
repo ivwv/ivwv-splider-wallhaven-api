@@ -37,8 +37,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "ivwv GitHub Action"
+          git config --local user.email "ivwv@ivwv.site"
+          git config --local user.name "ivwv"
           git add .
           git commit -m "Auto-commit from GitHub Action"
           git push
