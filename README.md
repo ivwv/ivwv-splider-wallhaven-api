@@ -1,1 +1,1 @@
-﻿# splider-wallhaven-api
+﻿#  splider-wallhaven-api
