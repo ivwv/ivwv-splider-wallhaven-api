@@ -10,8 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+      MYSQL_HOST: ${{ vars.MYSQL_HOST }}
       MYSQL_USER: ${{ vars.MYSQL_USER }}
+      MYSQL_PASSWORD: ${{vars.MYSQL_PASSWORD }}
+      MYSQL_DATABASE: ${{vars.MYSQL_DATABASE }}
+      MYSQL_PORT: ${{vars.MYSQL_PORT }}
+      START: ${{vars.START }}
+      IS_SPLIDER: ${{vars.IS_SPLIDER }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
