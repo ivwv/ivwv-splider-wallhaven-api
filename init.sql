@@ -1,0 +1,20 @@
+CREATE TABLE wallpapers (
+    id VARCHAR(255),
+    url VARCHAR(255),
+    short_url VARCHAR(255),
+    views VARCHAR(255),
+    favorites VARCHAR(255),
+    source VARCHAR(255),
+    purity VARCHAR(255),
+    category VARCHAR(255),
+    dimension_x VARCHAR(255),
+    dimension_y VARCHAR(255),
+    resolution VARCHAR(255),
+    ratio VARCHAR(255),
+    file_size VARCHAR(255),
+    file_type VARCHAR(255),
+    created_at VARCHAR(255),
+    colors VARCHAR(255),
+    path VARCHAR(255),
+    thumbs VARCHAR(255)
+);
