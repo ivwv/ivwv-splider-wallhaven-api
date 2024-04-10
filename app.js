@@ -63,6 +63,9 @@ async function fetchDataAndSaveToDB(page) {
 
     if (page < endPage) {
       await fetchDataAndSaveToDB(page + 1);
+    } else if (page === endPage) {
+      console.log("Reached the end page. Exiting the program.");
+      process.exit(0); // 退出程序，参数 0 表示正常退出
     }
   } catch (error) {
     if (error.response && error.response.status === 429) {
