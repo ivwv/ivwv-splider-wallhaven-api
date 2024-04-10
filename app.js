@@ -21,7 +21,12 @@ connection.connect((err) => {
 
 // wallhaven.ivwv.site wallhaven.cc p.ivwv.site/wallhaven.cc 随机返回这三个
 const randomDomain = () => {
-  const domains = ["wallhaven.ivwv.site", "p.ivwv.site/wallhaven.cc"];
+  const domains = [
+    "wallhaven.cc",
+    "wallhaven.cc",
+    "wallhaven.ivwv.site",
+    "p.ivwv.site/wallhaven.cc",
+  ];
   return domains[Math.floor(Math.random() * domains.length)];
 };
 
@@ -34,7 +39,7 @@ const logToFile = (logMessage) => {
 async function fetchDataAndSaveToDB(page) {
   try {
     const random = randomDomain();
-    const url = `https://${random}/api/v1/search?apikey=SdBeOVonDerGF07DKrmuzkJPvzj4cDHs&purity=111&page=${page}`;
+    const url = `https://${random}/api/v1/search?apikey=${process.env.API_KEY}&purity=111&page=${page}`;
     // console.log(url);
     const response = await axios.get(url);
 
@@ -53,7 +58,7 @@ async function fetchDataAndSaveToDB(page) {
     logToFile(`Page ${page} data saved to MySQL.-- use ${random}\n`);
 
     // 如果不是最后一页，则递归调用自身
-    if (page < meta.last_page) {
+    if (page < process.env.END ? process.env.END : meta.last_page) {
       await fetchDataAndSaveToDB(page + 1);
     }
   } catch (error) {
