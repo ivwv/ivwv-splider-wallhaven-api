@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+      MYSQL_USER: ${{ vars.MYSQL_USER }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
