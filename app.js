@@ -59,7 +59,9 @@ async function fetchDataAndSaveToDB(page) {
     logToFile(`Page ${page} data saved to MySQL.-- use ${random}\n`);
 
     // 如果不是最后一页，则递归调用自身
-    if (page < parseInt(process.env.END) ? parseInt(process.env.END) : meta.last_page) {
+    const endPage = process.env.END ? parseInt(process.env.END) : meta.last_page;
+
+    if (page < endPage) {
       await fetchDataAndSaveToDB(page + 1);
     }
   } catch (error) {
