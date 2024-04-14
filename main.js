@@ -21,7 +21,7 @@ const main = async () => {
     return ranges;
   }
 
-  const url = `https://p.ivwv.site/wallhaven.cc/api/v1/search?apikey=${process.env.API_KEY}&purity=111&page=1`;
+  const url = `https://wallhaven.cc/api/v1/search?apikey=${process.env.API_KEY}&purity=111&page=1`;
   const response = await axios.get(url).catch((err) => console.log(err));
   const { data, meta } = response.data;
   const threadRanges = calculateThreadRanges(
