@@ -3,27 +3,16 @@
  */
 const mysql = require("mysql");
 const fs = require("fs");
-const pool = require("../pool");
-
-// MySQL连接配置
-const connection = mysql.createConnection(pool);
-
-// 建立MySQL连接
-connection.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL: " + err.stack);
-    return;
-  }
-  console.log("Connected to MySQL as id " + connection.threadId);
-});
+const {connection} = require("../pool");
 
 // 执行查询并写入文本文件
 connection.query(
-  `
-  SELECT path
-  FROM wallpapers
-  WHERE dimension_x > 8000 AND purity = 'nsfw' AND category = 'people'
-`,
+  //   `
+  //   SELECT path
+  //   FROM wallpapers
+  //   WHERE dimension_x > 8000 AND purity = 'nsfw' AND category = 'people'
+  // `,
+  `SELECT * FROM wallpapers`,
   (error, results, fields) => {
     if (error) {
       console.error("Error executing query: " + error.stack);

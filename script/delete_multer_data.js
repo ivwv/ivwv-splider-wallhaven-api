@@ -1,10 +1,9 @@
 /**
  * 用于删除数据库中重复的数据
  */
-require("dotenv").config();
-console.log(process.env);
+require("dotenv").config(); 
 const mysql = require("mysql2/promise");
-const pool = require("../pool");
+const {pool} = require("../pool");
 
 async function main() {
   // 创建数据库连接
