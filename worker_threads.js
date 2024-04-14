@@ -1,15 +1,18 @@
 // 工作线程
+require("dotenv").config();
 const { parentPort } = require("worker_threads");
 
 const { HttpProxyAgent } = require("http-proxy-agent");
-const httpsAgent = new HttpProxyAgent("http://127.0.0.1:7899");
+let httpsAgent = null;
+if (process.env.HTTP_PROXY) {
+  httpsAgent = new HttpProxyAgent(process.env.HTTP_PROXY);
+}
 const axios = require("axios");
 const { connection } = require("./pool");
 const fs = require("fs");
 const { updateDomains } = require("./utils/domains");
 const { getAllUserAgent } = require("./utils/user-agent");
 const { getTime } = require("./utils/getTime");
-require("dotenv").config();
 let domains = [];
 let UserAgent = [];
 const randomDomain = () => {
@@ -33,7 +36,7 @@ async function fetchDataAndSaveToDB(page, end) {
         "User-Agent": randomUserAgent(),
       },
       httpsAgent,
-      proxy: true,
+      proxy: process.env.HTTP_PROXY ? true : false,
     });
     const { data, meta } = response.data;
     // 保存数据到MySQL

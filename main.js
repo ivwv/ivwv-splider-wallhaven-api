@@ -1,9 +1,9 @@
-(async () => {
-  const axios = require("axios");
+const axios = require("axios");
 
-  require("dotenv").config();
+require("dotenv").config();
+const main = async () => {
   // 主线程
-  const { Worker, isMainThread, parentPort, workerData } = require("worker_threads");
+  const { Worker, isMainThread } = require("worker_threads");
   const numThreads = require("os").cpus().length;
   function calculateThreadRanges(threadNum, allPageNums) {
     const ranges = [];
@@ -20,14 +20,14 @@
 
     return ranges;
   }
-  // 获取全部的页数
 
   const url = `https://p.ivwv.site/wallhaven.cc/api/v1/search?apikey=${process.env.API_KEY}&purity=111&page=1`;
   const response = await axios.get(url).catch((err) => console.log(err));
   const { data, meta } = response.data;
-  // 示例用法
-  // const threadRanges = calculateThreadRanges(numThreads, 30);
-  const threadRanges = calculateThreadRanges(numThreads, meta.last_page);
+  const threadRanges = calculateThreadRanges(
+    numThreads,
+    parseInt(process.env.END) || meta.last_page
+  );
   console.log(threadRanges);
 
   if (isMainThread) {
@@ -43,7 +43,14 @@
       worker.postMessage({
         start: threadRanges[i][0],
         end: threadRanges[i][1],
-      }); // 计算斐波那契数列的第40项
+      });
     }
+  }
+};
+(async () => {
+  if (process.env.IS_SPLIDER || process.env.IS_SPLIDER == "true") {
+    main();
+  } else {
+    return console.log("本次不会执行");
   }
 })();

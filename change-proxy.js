@@ -1,21 +1,15 @@
 const axios = require("axios");
+const clash_api = "http://127.0.0.1:9097";
+const proxie = "🚀 节点选择";
+
+// 定时切换节点时间
+const interval = 3000; // 10秒
 
 // 获取数据来源的接口
 const getSourceData = async () => {
   try {
-    const response = await axios.get("http://127.0.0.1:9097/providers/proxies", {
-      headers: {
-        accept: "application/json, text/plain, */*",
-        "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6",
-        "cache-control": "no-cache",
-        pragma: "no-cache",
-        "proxy-connection": "keep-alive",
-        "sec-gpc": "1",
-        Referer: "http://127.0.0.1:9097/ui/dashboard/",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-      },
-    });
-    return response.data.providers["🚀 节点选择"].proxies;
+    const response = await axios.get(`${clash_api}/providers/proxies`);
+    return response.data.providers[proxie].proxies;
   } catch (error) {
     console.error("Error fetching source data:", error);
     throw error;
@@ -25,23 +19,7 @@ const getSourceData = async () => {
 // 发送PUT请求的接口
 const sendPutRequest = async (name) => {
   try {
-    const response = await axios.put(
-      `http://127.0.0.1:9097/proxies/🚀 节点选择`,
-      { name },
-      {
-        headers: {
-          accept: "application/json, text/plain, */*",
-          "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6",
-          "cache-control": "no-cache",
-          "content-type": "application/json",
-          pragma: "no-cache",
-          "proxy-connection": "keep-alive",
-          "sec-gpc": "1",
-          Referer: "http://127.0.0.1:9097/ui/dashboard/",
-          "Referrer-Policy": "strict-origin-when-cross-origin",
-        },
-      }
-    );
+    const response = await axios.put(`${clash_api}/proxies/${proxie}`, { name });
     console.log("PUT request successful:", response.data);
   } catch (error) {
     console.error("Error sending PUT request:", error);
@@ -49,8 +27,6 @@ const sendPutRequest = async (name) => {
   }
 };
 
-// 定时执行任务
-const interval = 3000; // 10秒
 const executeTask = async () => {
   try {
     const proxies = await getSourceData();
