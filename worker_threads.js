@@ -4,7 +4,7 @@ const { parentPort } = require("worker_threads");
 
 const { HttpProxyAgent } = require("http-proxy-agent");
 let httpsAgent = null;
-if (process.env.HTTP_PROXY) {
+if (process.env.HTTP_PROXY != null || process.env.HTTP_PROXY != undefined) {
   httpsAgent = new HttpProxyAgent(process.env.HTTP_PROXY);
 }
 const axios = require("axios");
