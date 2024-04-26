@@ -23,10 +23,7 @@ connection.connect((err) => {
 // wallhaven.ivwv.site wallhaven.cc p.ivwv.site/wallhaven.cc 随机返回这三个
 const randomDomain = () => {
   const domains = [
-    "wallhaven.cc",
-    "wallhaven.cc",
-    "wallhaven.ivwv.site",
-    "p.ivwv.site/wallhaven.cc",
+    "wallhaven.cc", // 可以自行添加代理网址
   ];
   return domains[Math.floor(Math.random() * domains.length)];
 };
