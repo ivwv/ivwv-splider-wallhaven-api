@@ -20,7 +20,7 @@ connection.connect((err) => {
   console.log("Connected to MySQL as id " + connection.threadId);
 });
 
-// wallhaven.ivwv.site wallhaven.cc p.ivwv.site/wallhaven.cc 随机返回这三个
+// 随机返回目标地址
 const randomDomain = () => {
   const domains = [
     "wallhaven.cc", // 可以自行添加代理网址
