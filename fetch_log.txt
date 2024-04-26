@@ -1,10 +1,1 @@
-Page 1 data saved to MySQL.-- use wallhaven.ivwv.site
-Page 2 data saved to MySQL.-- use wallhaven.cc
-Page 3 data saved to MySQL.-- use p.ivwv.site/wallhaven.cc
-Page 4 data saved to MySQL.-- use wallhaven.ivwv.site
-Page 5 data saved to MySQL.-- use wallhaven.cc
-Page 6 data saved to MySQL.-- use wallhaven.cc
-Page 7 data saved to MySQL.-- use wallhaven.cc
-Page 8 data saved to MySQL.-- use wallhaven.cc
-Page 9 data saved to MySQL.-- use p.ivwv.site/wallhaven.cc
-Page 10 data saved to MySQL.-- use p.ivwv.site/wallhaven.cc
+
