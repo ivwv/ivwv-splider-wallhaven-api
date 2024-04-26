@@ -7,12 +7,11 @@ const {connection} = require("../pool");
 
 // 执行查询并写入文本文件
 connection.query(
-  //   `
-  //   SELECT path
-  //   FROM wallpapers
-  //   WHERE dimension_x > 8000 AND purity = 'nsfw' AND category = 'people'
-  // `,
-  `SELECT * FROM wallpapers`,
+    `
+    SELECT path
+    FROM wallpapers
+    WHERE dimension_x > 8000 AND purity = 'sfw' AND category = 'people'
+  `,
   (error, results, fields) => {
     if (error) {
       console.error("Error executing query: " + error.stack);
