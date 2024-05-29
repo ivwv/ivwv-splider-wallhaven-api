@@ -21,7 +21,7 @@ npm i
 - `MYSQL_PASSWORD`: **必填**，MySQL 密码
 - `MYSQL_DATABASE`: **必填**，MySQL 数据库名
 - `MYSQL_PORT`: **必填**，MySQL 端口号
-- `START`: **必填**，开始时间
+- `START`: **必填**，开始页数
 - `END`: *可选*，结束页数，设置需要爬取到的最后一页
 - `IS_SPIDER`: *可选*，是否进行爬取
 - `HTTP_PROXY`: *可选*，HTTP 代理
